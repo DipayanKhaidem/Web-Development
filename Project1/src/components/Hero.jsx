@@ -1,5 +1,8 @@
 import { ChevronDown } from "lucide-react";
 import {useEffect, useState} from "react";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { codeExamples } from "../data/CodeExample";
+import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/hljs";
 export default function Hero(){
     const [mousePosition,setMousePosition] =useState({x:0,y:0});
     const [activeTab,setActiveTab]=useState("App.jsx");
@@ -55,6 +58,19 @@ export default function Hero(){
                           onClick={()=>setActiveTab("Navbar.jsx")}
                         className={`px-3 py-2 backdrop-blur-sm text-xs sm:text-sm rounded-t-lg border 
                             ${activeTab==="Navbar.jsx"?"bg-blue-500 text-white border-blue-400/20":"bg-white/5 text-gray-300 border-white/10 hover:bg-white/10"} transition-all duration-200 whitespace-nowrap`}>Navbar.jsx</button>
+                    </div>
+                    {/* Code Content */}
+                    <div className="relative overflow-hidden flex-grow">
+                        <SyntaxHighlighter language="javascript" 
+                        style={nightOwl}
+                        customStyle={{margin:0,
+                        borderRadius:"8px",
+                        fontSize:"11px",
+                        lineHeight:"1.4",
+                        height:"100%",
+                        border:"1px solid #3c3c3c"}}>
+                            {codeExamples[activeTab]}
+                        </SyntaxHighlighter>
                     </div>
                 </div>
                 </div>
