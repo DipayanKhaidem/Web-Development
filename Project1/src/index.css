@@ -8,12 +8,17 @@
   }
 
   .slide-in-from-top{
-    animation-name:slideInFromTop;;
+    animation-name:slideInFromTop;
   }
+  .duration-200{
+    animation-duration:400ms;
+  }
+
   .duration-300{
     animation-duration:400ms;
   }
 }
+
 
 @keyframes slideInFromTop{
   from{
