@@ -1,7 +1,7 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Sparkles } from "lucide-react";
 import {useEffect, useState} from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { codeExamples } from "../data/CodeExample";
+import { codeExamples, floatingCards } from "../data/CodeExample";
 import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/hljs";
 export default function Hero(){
     const [mousePosition,setMousePosition] =useState({x:0,y:0});
@@ -16,7 +16,9 @@ export default function Hero(){
         return ()=>
             window.removeEventListener("mousemove",handleMouseMove);
         
-    },[])
+    },[]);
+
+    const currentFloatingCard=floatingCards[activeTab];
     return (
     
     <section className="relative min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -28,6 +30,17 @@ export default function Hero(){
       <div className="absolute top-20 left-4 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-20 right-4 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
 
+        <div className="max-w-7xl mx-auto text-center relative w-full">
+        <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center relative">
+        <div>
+        <div>
+            <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-4 sm:mb-6 animate-in slide-in-from-bottom duration-700">
+                <Sparkles />
+                <span>Introducing CodeFlow AI</span>
+            </div>
+        </div>
+        </div>    
+        
         <div className="relative order-2 w-full">
             <div className="relative bg-white/5 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/10">
                 <div className="bg-gradient-to-br from-gray-900/20 to gray-800/20 backdrop-blur-sm rounded-lg overflow-hidden h-[280px] sm:h-[350px] lg:h-[450px] border border-white/5">
@@ -74,7 +87,20 @@ export default function Hero(){
                     </div>
                 </div>
                 </div>
+                {/* Floating cards */}
+                <div className={`hidden lg:block absolute bottom-4 right-4 transform translate-x-8 translate-y-8 w-72 ${currentFloatingCard.bgColor} backdrop-blur-xl rounded-lg p-4 border border-white/20 shadow-2xl`}>
+                            <div className="flex items-center  space-x-2 mb-2">
+                                <div className={`w-6 h-6 ${currentFloatingCard.iconColor} flex items-center justify-center text-sm font-bold`}>{currentFloatingCard.icon}</div>
+                                <span className={`text-sm font-medium ${currentFloatingCard.textColor}`}>{currentFloatingCard.title}</span>
+                            </div>
+                            <div className={`text-sm text-left ${currentFloatingCard.contentColor}`}>
+                                {currentFloatingCard.content}
+                            </div>
+                </div>
+                
             </div>
+        </div>
+         </div>
         </div>
     </section>
     )
