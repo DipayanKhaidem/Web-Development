@@ -51,6 +51,8 @@ export default function Features(){
                         {/* Code Section */}
                         <div className="flex-1 w-full">
                             <div className="relative group">
+                                <div className="absolute inset-0 bg-gradient-to-br from blue-500/20 to-purple-500/20 rounded-xl
+                                sm:rounded-2xl transition-all duration-500" />
                             <div className="relative bg-gray-900/50 backdrop-blur-sm border border-gray-700/50
                             rounded-xl sm:rounded-2xl p-4 sm:p-6 overflow-hidden group-hover:border-1
                             group-hover:border-blue-600/50 transition-all duration-300">
@@ -68,7 +70,9 @@ export default function Features(){
                         <SyntaxHighlighter
                         language="javascript" 
                         style={nightOwl}
-                        customStyle={{margin:0,
+                        customStyle={{
+                        margin:0,
+                        background:"transparent",
                         borderRadius:"8px",
                         fontSize:"0.75rem",
                         lineHeight:"1.4",
@@ -84,7 +88,13 @@ export default function Features(){
                             </div>
                           </div>  
                         </div>
-                        
+                        {/* text section */}
+                        <div className="flex-1 w-full">
+                            <div className="max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                                <h3 className="text-4xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-white">{feature.title}</h3>
+                                <p className="text-gray-300 text-base text-xl sm:text-lg leading-relaxed">{feature.description}</p>
+                            </div>
+                        </div>
                     </div>
                 ))}
 
