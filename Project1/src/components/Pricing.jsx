@@ -52,7 +52,8 @@ const plans=[
 ]
 
 export default function Pricing(){
-    return (<section id="pricing" 
+    return (
+    <section id="pricing" 
     className="py-16 sm:py-20 px-10 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 sm:mb-16 lg:mb-20">
@@ -71,6 +72,7 @@ export default function Pricing(){
                 <div key={key} className={`relative bg-slate backdrop-blur-sm border rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-300 overflow-visible group-flex flex-col h-full
                     ${plan.mostPopular ? "border-blue-500 shadow-2xl shadow-blue-500/20 lg:scle-105"
                         :"border-slate-800 hover:border-slate-700"}`}>
+                            
                             {plan.mostPopular && (
                                 <div className="absolute -top-2 sm:-top-3 left-1/2 transform -translate-x-1/2 z-10 " >
                                     <div className="flex items-center space-x-1 px-3 sm:px-4 py-1 sm:py-1.5 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
